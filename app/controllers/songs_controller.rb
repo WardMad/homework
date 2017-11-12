@@ -1,39 +1,67 @@
 class SongsController < ApplicationController
   def show
-     @songs= Song.find(params[:id])
-   end
-
-  def index
-    @songs = artist.songs
+    @artist=current_artist
+    @song = current_song
+    # @duration = @song.convert_to_time
   end
-
-
   def new
-    @song = artist.songs.build
+    @song = current_artist.songs.build
   end
 
   def create
-    @song = artist.songs.build(song_params)
+    @song = current_artist.songs.build(song_params)
 
     if @song.save
-      redirect_to @song, notice: "Song created"
+      redirect_to artist_path(current_artist), notice: "Song created"
     else
       render :new
     end
+end
+    def destroy
+      current_song = Song.find(params[:id])
+
+      current_song.destroy
+
+
   end
 
+  def edit
+    @song = current_song
+    @artist = current_artist
+  end
 
+  def update
+    if current_song.update(song_params)
+      redirect_to artist_path(current_artist), notice: "Song updated"
+    else
+      render :edit #needs fixing
+    end
+  end
 
-  def set_song
-    @song = Song.find(params[:id])
+  def destroy
+    current_song = Song.find(params[:id])
+    current_song.destroy
+    redirect_to artist_path(current_artist), notice: "Song deleted"
+  end
+  # def convert_to_time
+  #   minutes = (@song.length / 60) % 60
+  #   seconds = @song.length % 60
+  #   format("%02d:%02d", minutes, seconds)
+  # end
+
+  private
+  def current_song
+    @song=Song.find(params[:id])
+  end
+
+  def current_artist
+    @artist = Artist.find(params[:artist_id])
   end
 
   def song_params
-    params.require(:song)
-      # .permit(
-      #   :home_type, :room_type, :accommodate, :bedroom_count, :bathroom_count, :listing_name,
-      #   :description, :address, :has_tv, :has_kitchen, :has_airco, :has_heating, :has_internet,
-      #   :price, :active
-      # )
+    params
+    .require(:song)
+    .permit(:name, :length, :release_date)
   end
+
 end
