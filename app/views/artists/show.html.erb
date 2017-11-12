@@ -28,6 +28,6 @@
 
   </p>
     <%end%>
-    <%= link_to "Add new song", new_artist_song_path(@artist), class: "btn btn-default" %>
+    <nav><%= link_to "Add new song", new_artist_song_path(@artist), class: "btn btn-default" %>
 
-    <%= link_to "Remove an artist", artist_path(@artist), class: "btn btn-default", method: :delete, data: { confirm: "Really? Dont do that!" } %>
+    <%= link_to "Remove an artist", artist_path(@artist), class: "btn btn-default", method: :delete, data: { confirm: "Really? Dont do that!" } %></nav>
