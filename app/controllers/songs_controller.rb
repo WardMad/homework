@@ -34,7 +34,7 @@ end
     if current_song.update(song_params)
       redirect_to artist_path(current_artist), notice: "Song updated"
     else
-      render :edit 
+      render :edit
     end
   end
 

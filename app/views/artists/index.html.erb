@@ -1,5 +1,23 @@
+<h1>Artists overview:</h1>
+<body>
+<div class="container">
+  <%@artists.each do |artist|%>
+  <div class="span-12">
+    <div class="thumbnail">
+      <%if artist.photos.first%>
+      <%= image_tag artist.photos.first.image.thumbnail %>
+      <%else%>
+      <img alt="Artist picture" style="height: 50px; width: 50px; display: block;"  >
+      <%end%>
+      <div class="caption">
+        <h3><%=artist.name%></h3>
+        <p><%= link_to "View", artist, class: "btn btn-success" %> </p>
+      </div>
+    </div>
+  </div>
+  <%end%>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
           <div class="row-fluid">
   <body><%@artists.each do |artist|%>
 <div class="span2">
@@ -14,4 +32,4 @@
             </div>
           </div>
         </div>
-        <% end %></body>
+        <% end %></body> -->
