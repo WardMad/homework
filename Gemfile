@@ -40,6 +40,10 @@ gem 'carrierwave', '0.11.2'
 gem 'cloudinary', '1.2.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'factory_girl_rails', '4.7.0'
+
+gem 'faker', '1.6.6'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
