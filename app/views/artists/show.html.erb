@@ -7,6 +7,9 @@
 <h4> Age:<%= @artist.age %> </h4>
 <h4> Country: <%= @artist.country  %></h4>
 <h4> Style: <%= @artist.style %></h4>
+<h4> Biography: </h4> <h5><%=   @artist.info %> </h5>
+  <a  target="_tab" <%= link_to "More Info? ", @artist.url, class: "btn btn-success"%></a>
+<h4> Billiejean: <%= @artist.video %></h4>
 </div>
 
 
