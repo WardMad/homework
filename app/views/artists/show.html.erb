@@ -1,30 +1,33 @@
 <h4><li class="sidebar-item"><%= link_to "Artists Overview", artists_path, class: "sidebar-link" %></li>
 </h4>
 <div class="panel panel-primary">
-
+  <div class="img-circle" alt="Cinque Terre">
+  <% @artist.photos.each do |photo| %>
+   <div class="panel-heading">
+    <%= image_tag photo.image.thumbnail %>
+    </div>
+  </div>
+    <%end%>
 <h3> <%=@artist.name%></h3>
 
 <h4> Age:<%= @artist.age %> </h4>
 <h4> Country: <%= @artist.country  %></h4>
 <h4> Style: <%= @artist.style %></h4>
+<h4> Biography: </h4> <h5><%=   @artist.info %> </h5>
+  <a  target="_tab" <%= link_to "More Info? ", @artist.url, class: "btn btn-success"%></a>
 </div>
 
 
 
 
 
-<div class="img-circle" alt="Cinque Terre">
-<% @artist.photos.each do |photo| %>
- <div class="panel-heading">
-  <%= image_tag photo.image.thumbnail %>
-  </div>
-</div>
-  <%end%>
+
 
   <div class="progress-bar", role="progressbar" aria-valuenow="3"
   aria-valuemin="1" aria-valuemax="100" style="width:100%">
 
     <span class="sr-only"> </span><h2>All Time Hits</h2>
+    <iframe width="560" height="315" src= "<%= @artist.video %>" frameborder="1" allowfullscreen></iframe>
 
 </div>
 
