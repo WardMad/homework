@@ -7,6 +7,8 @@
 <h4> Age:<%= @artist.age %> </h4>
 <h4> Country: <%= @artist.country  %></h4>
 <h4> Style: <%= @artist.style %></h4>
+<h4> Biography: </h4> <h5><%=   @artist.info %> </h5>
+  <a  target="_tab" <%= link_to "More Info? ", @artist.url, class: "btn btn-success"%></a>
 </div>
 
 
@@ -25,6 +27,7 @@
   aria-valuemin="1" aria-valuemax="100" style="width:100%">
 
     <span class="sr-only"> </span><h2>All Time Hits</h2>
+    <iframe width="560" height="315" src= "<%= @artist.video %>" frameborder="1" allowfullscreen></iframe>
 
 </div>
 
