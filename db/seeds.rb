@@ -3,10 +3,34 @@ Photo.destroy_all
 Artist.destroy_all
 Song.destroy_all
 
-michel_jackson = Artist.create!( name: "MIchael Jackson", age: 0, country: "USA", style: "Pop" )
-andrea_bocelli = Artist.create!( name: "Andrea Bocelli", age: 59, country: "Italy", style: "Classic Opera"  )
-beyonce = Artist.create!( name: "Beyonce", age: 39, country: "USA", style: "R&B, Pop" )
-aznaur = Artist.create!( name: "Charles Aznavour", age: 93, country: "Armenia/France", style: " Chanson, Jazz" )
+michel_jackson = Artist.create!( name: "MIchael Jackson", age: 0, country: "USA", style: "Pop", info:
+   "Michael Joseph Jackson (August 29, 1958 – June 25, 2009) was an American singer, songwriter, and dancer.
+    Dubbed the King of Pop, he was one of the most popular entertainers in the world, and was the best-selling music artist at the time of his death. Jackson's contributions to music, dance,
+    and fashion ,along with his publicized personal life made him a global figure in popular culture for over four decades...." ,
+    url: "https://en.wikipedia.org/wiki/Michael_Jackson", video: "https://www.youtube.com/embed/sOnqjkJTMaA" )
+
+
+
+andrea_bocelli = Artist.create!( name: "Andrea Bocelli", age: 59, country: "Italy", style: "Classic Opera", info: "Born 22 September 1958, is an Italian classical crossover tenor, recording artist,
+and singer-songwriter. Born with poor eyesight, Bocelli became completely blind at the age of 12, following a football accident.
+Bocelli has recorded fifteen solo studio albums, of both pop and classical music,
+three greatest hits albums, and nine complete operas, selling over 80 million records worldwide.He has had success as a crossover performer bringing classical music to the top of international pop charts...
+  ", url: "http://www.andreabocelli.com/", video: "https://www.youtube.com/embed/06hqxmiOXIA"  )
+
+
+
+beyonce = Artist.create!( name: "Beyonce", age: 39, country: "USA", style: "R&B, Pop", info: "Beyoncé Giselle Knowles-Carter . Born September 4, 1981, is an American singer, songwriter, dancer, and actress.
+  Born and raised in Houston, Texas, Beyoncé performed in various singing and dancing competitions as a child. She rose to fame in the late 1990s as lead singer of the R&B girl-group Destiny's Child.
+   Managed by her father, Mathew Knowles, the group became one of the world's best-selling girl groups in history..... ",
+   url: "https://en.wikipedia.org/wiki/Beyonc%C3%A9", video: "https://www.youtube.com/embed/RZuJ_OHBN78")
+
+
+aznaur = Artist.create!( name: "Charles Aznavour", age: 93, country: "Armenia/France", style: " Chanson, Jazz", info: "Charles Aznavour . Shahnour  Aznavourian, Armenian: Շահնուր Վաղինակ Ազնավուրեան; 22 May 1924.
+   French, later naturalised Armenian singer, songwriter, actor, public activist and diplomat. Aznavour is known for his unique tenor voice:
+    clear and ringing in its upper reaches, with gravelly and profound low notes. In a career spanning over 80 years, he has written more than 800 songs.
+     On disc, he recorded more than 1,200 songs, sung in eight languages......
+  ", url: "https://en.wikipedia.org/wiki/Charles_Aznavour", video: "https://www.youtube.com/embed/4xKYfPwTENQ" )
+
 
 
 billie_jean= Song.create!(name:"Billie Jean", artist:michel_jackson )
