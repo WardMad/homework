@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   def show
     @artist=current_artist
     @song = current_song
-    # @duration = @song.convert_to_time
+    render json: @song if params[:format] == 'json'
   end
   def new
     @song = current_artist.songs.build
@@ -10,19 +10,16 @@ class SongsController < ApplicationController
 
   def create
     @song = current_artist.songs.build(song_params)
-
+    # jsonform, songs_path
+    respond_to do |format|
     if @song.save
-      redirect_to artist_path(current_artist), notice: "Song created"
-    else
-      render :new
+    format.html {redirect_to artist_path(current_artist), notice: "Song is not created"}
+    format.json {render json: {song: @song, status: :created }}
+  else
+        format.html {render :new }
+        format.json {render json: @song.errors, status: :unprocessable_entity }
+      end
     end
-end
-    def destroy
-      current_song = Song.find(params[:id])
-
-      current_song.destroy
-
-
   end
 
   def edit
@@ -41,8 +38,10 @@ end
   def destroy
     current_song = Song.find(params[:id])
     current_song.destroy
-    redirect_to artist_path(current_artist), notice: "Song deleted"
+    respond_to do |format|
+    format.json { render json: {song: @song, status: :deleted}}
   end
+end
 
   private
   def current_song
