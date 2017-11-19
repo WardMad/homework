@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 Rspec.describe Song, type: :model do
-describe "validations" do
+  describe "validations" do
   it "is invalid without name" do
-    song = Song.new(song_name: "")
+    song = Song.new(song_name: " ")
   end
 end
-
+end
 describe "association with artist" do
   it "belongs to a artist" do
     artist = Artist.new()
@@ -14,4 +14,5 @@ describe "association with artist" do
 
     expect(song.artist).to eq(artist)
 
+end
 end

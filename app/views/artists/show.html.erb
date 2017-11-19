@@ -1,4 +1,4 @@
-
+<body>
 
 <h4><li class="sidebar-item"><%= link_to "Artists Overview", artists_path, class: "sidebar-link" %></li>
 </h4>
@@ -10,7 +10,7 @@
     </div>
 <%end%>
 </div>
-<body>
+
  <table>
 <%= render "artists/form",  song: @songs %>
 </table>
@@ -20,17 +20,18 @@
     <h3>  <%=  song.name%></h3>
     <!-- <h5><%= link_to "Delete song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
 </h5> -->
-
+  <%end%>
 
 </div>
-<div class="alert alert-info"><strong>!</strong>   <%= link_to "Add new song", new_artist_song_path(@artist), class: "btn btn-success" %>
+<div class="alert alert-info"><strong>!</strong>
   <div class="footer">
     Song: <span id="song-count">1</span> •
     Done: <span id="completed-count">0</span> •
     Total: <span id="total-count">1</span> •
     <a href="#" id="clean-up">Clean up</a>
   </div>
-  </body>
+
+
 
 <tr class="song <%= @song.created? ? "success" : "" %>" data-id="<%= @song.id %>">
   <td>
@@ -40,4 +41,4 @@
     <label for="song-<%= @song.id %>"><%= @song.name %></label>
   </td>
 </tr>
-<%end%>
+  </body>

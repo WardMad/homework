@@ -1,7 +1,18 @@
-<%= form_for @artist do |f| %>
+<%= form_with(model: song, local: true) do |form| %>
 
 
 
-  <%= link_to "Back", root_path, class: "btn btn-default" %>
+<div class="field">
+  <%= form.label :name %>
+  <%= form.text_field :tname, id: :song_name %>
+</div>
+
+<div class="field">
+  <%= form.label :created %>
+  <%= form.check_box :created, id: :song_created %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
 </div>
 <% end %>
