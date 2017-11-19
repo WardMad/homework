@@ -1,5 +1,5 @@
 
-<body>
+
 <h4><li class="sidebar-item"><%= link_to "Artists Overview", artists_path, class: "sidebar-link" %></li>
 </h4>
 <div class="panel panel-primary">
@@ -10,34 +10,34 @@
     </div>
 <%end%>
 </div>
-
-
-
-  <div class="progress-bar", role="progressbar" aria-valuenow="3"
-  aria-valuemin="1" aria-valuemax="100" style="width:100%">
-
-    <span class="sr-only"> </span><h2>All Time Hits</h2>
-    <iframe width="560" height="315" src= "<%= @artist.video %>" frameborder="1" allowfullscreen></iframe>
-</div>
-
-
-#try rendering(like 3Dmax)
-
+<body>
  <table>
-<%= render "artists/form", artist: @artist, song: @songs %>
+<%= render "artists/form",  song: @songs %>
+</table>
 
-  </table>
 
-#"Songs-it..<div> <%@artist.songs.each do |song| %>
-    <h3>  <%= link_to song.name%></h3>
-    <h5><%= link_to "Delete song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
-</h5>
+<div> <%@artist.songs.each do |song| %>
+    <h3>  <%=  song.name%></h3>
+    <!-- <h5><%= link_to "Delete song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
+</h5> -->
 
-<%end%>
+
 </div>
-
-
-#"usefull info_for_visitors"
 <div class="alert alert-info"><strong>!</strong>   <%= link_to "Add new song", new_artist_song_path(@artist), class: "btn btn-success" %>
-
+  <div class="footer">
+    Song: <span id="song-count">1</span> •
+    Done: <span id="completed-count">0</span> •
+    Total: <span id="total-count">1</span> •
+    <a href="#" id="clean-up">Clean up</a>
+  </div>
   </body>
+
+<tr class="song <%= @song.created? ? "success" : "" %>" data-id="<%= @song.id %>">
+  <td>
+    <input name="song[<%= @song.id %>]" id="song-<%= @song.id %>" type="checkbox" value="1" <%= @song.created? ? 'checked="checked"' : '' %>>
+  </td>
+  <td>
+    <label for="song-<%= @song.id %>"><%= @song.name %></label>
+  </td>
+</tr>
+<%end%>
