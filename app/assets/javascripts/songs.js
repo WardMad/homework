@@ -1,26 +1,26 @@
-function toggleDone() {
-  var checkbox = this;
-  var tableRow = $(this).parent().parent();
-
-
-
-function updateCounters() {
-  $("#total-count").html($(".song").size());
-  $("#created-count").html($(".success").size());
-  $("#song-count").html($(".song").size() - $(".success").size());
-}
+// function toggleDone() {
+//   var checkbox = this;
+//   var tableRow = $(this).parent().parent();
+//
+// }
+//
+// function updateCounters() {
+//   $("#total-count").html($(".song").size());
+//   $("#created-count").html($(".success").size());
+//   $("#song-count").html($(".song").size() - $(".success").size());
+// }
 
 function createSong(name) {
   var newSong = { name: name, created: true};
   var path = window.location.pathname
-  var songId = tableRow.data('id');
-  var isCreated = !tableRow.hasClass("success");
+  // var songId = tableRow.data('id');
+  // var isCreated = !tableRow.hasClass("success");
 
   $.ajax({
     type: "POST",
-    url: path + "songs.json",
+    url: path + "/songs.json",
     data: JSON.stringify({
-    song: { created: isCreated }
+    song: newSong
     }),
     contentType: "application/json",
     dataType: "json"})
@@ -29,6 +29,13 @@ function createSong(name) {
       console.log(data);
 
       tableRow.toggleClass("success", data.created);
+      // $("#songList").append(tableRow);
+})
+
+.fail(function(error) {
+  console.log(error)
+  error_message = error.responseJSON.name[0];
+  showError(error_message);
 });
 }
 
@@ -101,35 +108,29 @@ function submitSong(event) {
 //     deleteSong(songId);
 //   });
 // }
+$(document).ready(function() {
+ $("#button-save");
+  // $("input[type=checkbox]").bind('change', toggleDone);
+ $("form").bind('submit', submitSong);
+ $("form").bind('delete', deleteSong);
+});
 
-
-
+//fuckkkkkkkkkkkkkkkk
 
 function deleteSong(songId) {
-    var path = window.location.pathname
+    // var path = window.location.pathname
   $.ajax({
     type: "DELETE",
-     url: path + "?songs/" + songId + ".json",
+    url:  "/songs/" + songId + ".json",
     contentType: "application/json",
-    dataType: "json" }),
+    dataType: "json"
+  })
+  .done(function(data) {
+  $('tr[data-id="'+songId+'"]').remove();
 
- //  .done(function(data) {
- //    $('tr[data-id="'+songId+'"]').remove();
- //     $("form").bind('delete', deleteSong);
- //   });
- // }
-//fauckkkkkkkkkkkkkkkk
- $(document).ready(function() {
-  $("#button-save");
-   // $("input[type=checkbox]").bind('change', toggleDone);
-  $("form").bind('submit', submitSong);
-  $("form").bind('delete', deleteSong);
-   // $("#clean-up").bind('click', cleanUpDoneSongs);
-   // updateCounters();
+   });
  }
 
-// $(document).ready(function() {
-// $("#button-save").attr('data-disable-with', "Save")
-// $("#new_song").on('submit', submitSong);
-// $(".delete-song").children().on('click', deleteSong);
-// });
+
+ // $("#clean-up").bind('click', cleanUpDoneSongs);
+   // updateCounters();

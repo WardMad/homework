@@ -26,7 +26,7 @@ a<body>
 <div> <%@artist.songs.each do |song| %>
       <h5>  <%= link_to song.name, artist_song_path(@artist, song)%></h5>
 
-<span class="delete-song"><a class="btn btn-default" id="<%=song.id%>">Delete </a></span>
+  <h5><%= link_to "Delete song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
 
 
   </div>
