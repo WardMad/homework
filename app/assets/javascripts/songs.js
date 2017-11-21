@@ -26,9 +26,12 @@ function createSong(name) {
     dataType: "json"})
 
     .done(function(data) {
-      console.log(data);
+     console.log(data);
 
-      tableRow.toggleClass("success", data.created);
+
+
+
+      // tableRow.toggleClass("success", data.created);
       // $("#songList").append(tableRow);
 })
 
@@ -95,8 +98,8 @@ function submitSong(event) {
   event.preventDefault();
   resetErrors();
 
-  createSong($("#song_song").val());
-  $("#song_song").val(null);
+  createSong($("#song_name").val());
+  $("#song_name").val(" ");
   $("#button-save");
 }
 
@@ -108,12 +111,6 @@ function submitSong(event) {
 //     deleteSong(songId);
 //   });
 // }
-$(document).ready(function() {
- $("#button-save");
-  // $("input[type=checkbox]").bind('change', toggleDone);
- $("form").bind('submit', submitSong);
- $("form").bind('delete', deleteSong);
-});
 
 //fuckkkkkkkkkkkkkkkk
 
@@ -131,6 +128,12 @@ function deleteSong(songId) {
    });
  }
 
+ $(document).ready(function() {
+   $("#button-save");
+   // $("input[type=checkbox]").bind('change', toggleDone);
+   $("form").bind('submit', submitSong);
+   $("form").bind('delete', deleteSong);
+ });
 
  // $("#clean-up").bind('click', cleanUpDoneSongs);
    // updateCounters();
