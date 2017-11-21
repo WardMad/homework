@@ -1,4 +1,4 @@
-<body>
+a<body>
 
 <h4><li class="sidebar-item"><%= link_to "Artists Overview", artists_path, class: "sidebar-link" %></li>
 </h4>
@@ -10,27 +10,28 @@
     </div>
 <%end%>
 </div>
+<h3> <%=@artist.name%></h3>
 
+<h4> Age:<%= @artist.age %> </h4>
+<h4> Country: <%= @artist.country  %></h4>
+<h4> Style: <%= @artist.style %></h4>
+<h4> Biography: </h4> <h5><%=   @artist.info %> </h5>
+  <a  target="_tab" <%= link_to "More Info? ", @artist.url, class: "btn btn-success"%></a>
+</div>
  <table>
-<%= render "artists/form",  song: @songs %>
+<%= render "/songs/form", artist: @artist, song: @song %>
 </table>
 
 
 <div> <%@artist.songs.each do |song| %>
-    <h3>  <%=  song.name%></h3>
-    <!-- <h5><%= link_to "Delete song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
-</h5> -->
-  <%end%>
+      <h5>  <%= link_to song.name, artist_song_path(@artist, song)%></h5>
 
-</div>
-<div class="alert alert-info"><strong>!</strong>
-  <div class="footer">
-    Song: <span id="song-count">1</span> •
-    Done: <span id="completed-count">0</span> •
-    Total: <span id="total-count">1</span> •
-    <a href="#" id="clean-up">Clean up</a>
+<span class="delete-song"><a class="btn btn-default" id="<%=song.id%>">Delete </a></span>
+
+
   </div>
 
+  <%end%>
 
 
 <tr class="song <%= @song.created? ? "success" : "" %>" data-id="<%= @song.id %>">

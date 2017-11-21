@@ -1,9 +1,5 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Add song
-  </div>
+<h1>New Song</h1>
 
-  <div class="panel-body">
-    <%= render 'form', song: @song %>
-  </div>
-</div>
+<%= render 'form', song: @song %>
+
+<%= link_to 'Back', songs_path %>

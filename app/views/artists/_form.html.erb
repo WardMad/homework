@@ -1,18 +1,15 @@
-<%= form_with(model: song, local: true) do |form| %>
+<%= form_for ([@artist, @song]) do |f| %>
+<%  %>
+<div class="form-group">
 
-
-
-<div class="field">
-  <%= form.label :name %>
-  <%= form.text_field :tname, id: :song_name %>
+<%= f.text_field :name, placeholder: "Song", class: "form-control" %>
 </div>
 
-<div class="field">
-  <%= form.label :created %>
-  <%= form.check_box :created, id: :song_created %>
-</div>
 
-<div class="actions">
-  <%= form.submit %>
-</div>
+
+
+<!-- <div class="actions">
+
+    <%= link_to "Add new song", new_artist_song_path(@artist), class: "btn btn-success" %>
+</div> -->
 <% end %>

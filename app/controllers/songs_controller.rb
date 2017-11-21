@@ -13,10 +13,10 @@ class SongsController < ApplicationController
     # jsonform, songs_path
     respond_to do |format|
     if @song.save
-    format.html {redirect_to artist_path(current_artist), notice: "Song is not created"}
+
     format.json {render json: {song: @song, status: :created }}
   else
-        format.html {render :new }
+
         format.json {render json: @song.errors, status: :unprocessable_entity }
       end
     end
