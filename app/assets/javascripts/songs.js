@@ -90,7 +90,7 @@ function submitSong(event) {
 
   createSong($("#song_song").val());
   $("#song_song").val(null);
-
+  $("#button-save");
 }
 
 // function cleanUpDoneSongs(event) {
@@ -102,23 +102,34 @@ function submitSong(event) {
 //   });
 // }
 
-$(document).ready(function() {
-  // $("input[type=checkbox]").bind('change', toggleDone);
-  $("form").bind('submit', submitSong);
-  // $("#clean-up").bind('click', cleanUpDoneSongs);
-  // updateCounters();
-});
+
 
 
 function deleteSong(songId) {
+    var path = window.location.pathname
   $.ajax({
     type: "DELETE",
-    url: path  + songId + "songs.json",
+     url: path + "?songs/" + songId + ".json",
     contentType: "application/json",
-    dataType: "json"
-  }),
-  .done(function(data) {
-    $('tr[data-id="'+songId+'"]').remove();
+    dataType: "json" }),
 
- });
+ //  .done(function(data) {
+ //    $('tr[data-id="'+songId+'"]').remove();
+ //     $("form").bind('delete', deleteSong);
+ //   });
+ // }
+//fauckkkkkkkkkkkkkkkk
+ $(document).ready(function() {
+  $("#button-save");
+   // $("input[type=checkbox]").bind('change', toggleDone);
+  $("form").bind('submit', submitSong);
+  $("form").bind('delete', deleteSong);
+   // $("#clean-up").bind('click', cleanUpDoneSongs);
+   // updateCounters();
  }
+
+// $(document).ready(function() {
+// $("#button-save").attr('data-disable-with', "Save")
+// $("#new_song").on('submit', submitSong);
+// $(".delete-song").children().on('click', deleteSong);
+// });
